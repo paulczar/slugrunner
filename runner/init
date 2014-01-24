@@ -11,6 +11,10 @@ if [[ $(ls -A $HOME) ]]; then
 elif [[ $SLUG_URL ]]; then
 	curl -s "$SLUG_URL" | tar -xzC $HOME
 	unset SLUG_URL
+elif [[ -f /tmp/slug.tgz ]]; then
+        cd $HOME
+        tar xzf /tmp/slug.tgz
+        rm /tmp/slug.tgz
 else
 	cat | tar -xzC $HOME
 fi
